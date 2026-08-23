@@ -1,0 +1,864 @@
+<?php
+//bet-bot-v2 |.| Developer: 13 |||| instagram-id:@sizdahorg |||||| telegram-channel: 13HACK - @tmsizdah 
+date_default_timezone_set('Asia/Tehran');
+include('sizdahorg.php');
+if(is_file("error_log")){
+unlink("error_log");
+}
+define(8963231724:AAHkYzPZLsLgRHtYhfXsnU1wHVkkKoTAx18"); 
+function bot($method,$datas=[]){
+$url = "https://api.telegram.org/bot".API_KEY."/".$method;
+$ch = curl_init();curl_setopt($ch,CURLOPT_URL,$url);curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);curl_setopt($ch,CURLOPT_POSTFIELDS,$datas);$res = curl_exec($ch);
+if(curl_error($ch)){var_dump(curl_error($ch));
+}else{
+return json_decode($res);
+}}
+function SendMessage($fromid,$text,$keyboard = null){
+return bot('sendMessage',[
+'chat_id'=>$fromid,
+'text'=>$text,
+'parse_mode'=>"html",
+'disable_web_page_preview'=>"true",
+'reply_markup'=>$keyboard]);
+}
+@$update = json_decode(file_get_contents("php://input"));
+if(isset($update)){
+$telegram_ip_ranges = [['lower' =>'149.154.160.0','upper' =>'149.154.175.255'],['lower' =>'91.108.4.0','upper' => '91.108.7.255'],];
+$ip_dec = (float) sprintf("%u",ip2long($_SERVER['REMOTE_ADDR']));
+$ok=false;
+foreach($telegram_ip_ranges as $telegram_ip_range)if(!$ok){
+$lower_dec = (float) sprintf("%u", ip2long($telegram_ip_range['lower']));
+$upper_dec = (float) sprintf("%u", ip2long($telegram_ip_range['upper']));
+if($ip_dec >= $lower_dec and $ip_dec <= $upper_dec) $ok=true;
+}
+if(!$ok)die("13HACK - https://t.me/tmsizdah");
+}
+@$text = $update->message->text;
+@$from_id = $update->message->from->id;
+@$type = $update->message->chat->type;
+@$first_name = $update->message->from->first_name;
+@$username2 = $update->message->from->username;
+@$message_id = $update->message->message_id;
+@$data = $update->callback_query->data;
+@$messageid = $update->callback_query->message->message_id;
+@$server = 'localhost';
+@$username = '22222222222222222222'; 
+@$password = '22222222222222222222'; 
+@$db = '222222222222222222222'; 
+@$channel = "https://t.me/bet_ehraz 
+@$channel2 = "https://t.me/bet_ehraz
+@$SIZDAHORG = "https://t.me/betehrazm"; 
+@$admin = array("8303877957","8303877957"); 
+@$connect = mysqli_connect($server,$username,$password,$db);
+@$setting = mysqli_fetch_assoc(mysqli_query($connect,"SELECT * FROM user WHERE id = '$from_id' LIMIT 1"));
+@$bot = mysqli_fetch_assoc(mysqli_query($connect,"SELECT * FROM bot WHERE id = '1' LIMIT 1"));
+@$tch = json_decode(file_get_contents("https://api.telegram.org/bot".API_KEY."/getChatMember?chat_id=@$channel&user_id=".$from_id))->result->status;
+@$tch2 = json_decode(file_get_contents("https://api.telegram.org/bot".API_KEY."/getChatMember?chat_id=@$channel2&user_id=".$from_id))->result->status;
+@$get = json_decode(file_get_contents("https://api.telegram.org/bot".API_KEY."/getMe"));
+@$botid = $get->result->username;
+@$contact = $update->message->contact;
+@$contactid = $contact->user_id;
+@$contactnum = $contact->phone_number;
+@$button = json_encode(['keyboard'=>[
+[['text'=>"ðØ´Ø±ÙØ¹ Ø´Ø±Ø·Ø¨ÙØ¯Ûð"]],
+[['text'=>"ð¥Ø¨Ø±Ø¯Ø§Ø´Øª ÙÙØ¬ÙØ¯Ûð¥"],['text'=>"ð¦Ø§ÙØ²Ø§ÛØ´ ÙÙØ¬ÙØ¯Ûð¦"]],
+[['text'=>"ðØ­Ø³Ø§Ø¨ Ú©Ø§Ø±Ø¨Ø±Ûð"]],
+[['text'=>"âï¸ÙÙØ§ÙÛÙ"],['text'=>"âï¸Ù¾Ø´ØªÛØ¨Ø§ÙÛ"]],
+[['text'=>"ð Ø±Ø§ÙÙÙØ§"]],
+],'resize_keyboard'=>true]);
+@$button_admin = json_encode(['keyboard'=>[
+[['text'=>"ðØ¢ÙØ§Ø± Ø±Ø¨Ø§Øª ð"]],
+[['text'=>"âï¸Ù¾ÛØ§Ù ÙÙÚ¯Ø§ÙÛâï¸"],['text'=>"ð¯ÙØ±ÙØ§Ø±Ø¯ ÙÙÚ¯Ø§ÙÛð¯"]],
+[['text'=>"âÚ©Ø§ÙØ´ ÙÙØ¬ÙØ¯Û"],['text'=>"ðµØ§ÙØ²Ø§ÛØ´ ÙÙØ¬ÙØ¯Û"]],
+[['text'=>"âØ¢Ø²Ø§Ø¯ Ø³Ø§Ø²Û Ø­Ø³Ø§Ø¨â"],['text'=>"â ï¸ÙØ³Ø¯ÙØ¯ Ú©Ø±Ø¯Ù Ø­Ø³Ø§Ø¨â ï¸"]],
+[['text'=>"ðØ¨Ø§Ø²Ú¯Ø´Øª"]],
+],'resize_keyboard'=>true]);
+@$button_f = json_encode(['keyboard'=>[
+[['text'=>"ðØ¯Ø±Ú¯Ø§Ù Ù¾Ø±Ø¯Ø§Ø®Øª Ø¢ÙÙØ§ÛÙ"],['text'=>"ðØ´Ø§Ø±Ú Ø³ÛÙÚ©Ø§Ø±Øª"]],
+[['text'=>"ð³Ú©Ø§Ø±Øª Ø¨Ù Ú©Ø§Ø±Øªð³"],['text'=>"ð¶ ØªØªØ±"]],
+[['text'=>"ð¥Ø²ÛØ± ÙØ¬ÙÙØ¹Ù Ú¯ÛØ±Ûð¥"]],
+
+[['text'=>"ðØ¨Ø§Ø²Ú¯Ø´Øª"]],
+],'resize_keyboard'=>true]);
+@$button_b = json_encode(['keyboard'=>[
+[['text'=>"ð£ Ø§ÙÙØ¬Ø§Ø±"],['text'=>"ð¢ ÙÙÙØªÛ"]],
+[['text'=>"ð² ØªØ§Ø³"],['text'=>"ð¯ Ø¯Ø§Ø±Øª"]],
+[['text'=>"ð° ÙØ§Ø´ÛÙ Ø§Ø³Ú©Ø§Øª"],['text'=>"ð³ Ø¨ÙÙÛÙÚ¯"]],
+[['text'=>"ðØ¨Ø§Ø²Ú¯Ø´Øª"]],
+],'resize_keyboard'=>true]);
+@$button_ts = json_encode(['keyboard'=>[
+[['text'=>"ðªªØ§Ø±Ø²Ø¯ÛØ¬ÛØªØ§Ù-ØªØªØ±"]],
+[['text'=>"ð³Ú©Ø§Ø±Øª Ø¨Ø§ÙÚ©Ûð³"],['text'=>"ð¿Ø´Ø§Ø±Ú Ø³ÛÙ Ú©Ø§Ø±Øª"]],
+[['text'=>"ðØ¨Ø§Ø²Ú¯Ø´Øª"]],
+],'resize_keyboard'=>true]);
+if($setting['step'] =="bon" and !in_array($from_id,$admin) and $type == "private"){
+exit();}
+if(preg_match('/^\/([Ss]tart)(.*)/',$text,$match) and $type == "private"){
+$match[2] = str_replace(" ","",$match[2]);
+$match[2] = str_replace("\n","",$match[2]);
+if($match[2] != null and $match[2] != $from_id and $setting['id'] == false){
+if($channel != '' and $tch != 'member' && $tch != 'creator' && $tch != 'administrator' and $type == "private"){
+SendMessage($from_id,"â ï¸ Ø¬ÙØª ÙØ¹Ø§ÙÛØª ÙÛØ§Ø² Ø§Ø³Øª Ø¯Ø± Ú©Ø§ÙØ§Ù Ø§Ø·ÙØ§Ø¹ Ø±Ø³Ø§ÙÛ Ø¹Ø¶Ù Ø´ÙÛØ¯.
+
+ð @$channel
+ð @$channel2
+
+â»ï¸ Ù¾Ø³ Ø§Ø² Ø¹Ø¶ÙÛØª Ø¯Ø± Ú©Ø§ÙØ§Ù ÙØ¬Ø¯Ø¯Ø§ Ø±Ø¨Ø§Øª Ø±Ø§ /start Ø§Ø±Ø³Ø§Ù ÙÙØ§ÛÛØ¯.",json_encode(['inline_keyboard' => [[['text' => "ÙØ±ÙØ¯ Ø¨Ù Ú©Ø§ÙØ§Ù Ø§ÙÙ",'url' => "https://t.me/$channel"]],[['text' => "ÙØ±ÙØ¯ Ø¨Ù Ú©Ø§ÙØ§Ù Ø¯ÙÙ",'url' => "https://t.me/$channel2"]],]]));
+$connect->query("INSERT INTO `user` (`id`,`step`,`money`,`subset`,`number`) VALUES ('$from_id',NULL,'0','0',NULL)");
+$connect->query("UPDATE user SET step = 'ozv-$match[2]' WHERE id = '$from_id' LIMIT 1");
+exit();}else{
+@$s = mysqli_fetch_assoc(mysqli_query($connect,"SELECT * FROM user WHERE id = '$match[2]' LIMIT 1"));
+$ez = $s['money']+100;
+$ez2 = $s['subset']+1;
+$connect->query("UPDATE user SET money = '$ez', subset = '$ez2' WHERE id = '$match[2]' LIMIT 1");
+SendMessage($match[2],"ÛÚ© Ø²ÛØ± ÙØ¬ÙÙØ¹Ù Ø§ÙÙØ¯ 100 Ø³Ú©Ù Ú¯Ø±ÙØªÛ");
+}}
+if($setting['id'] == false){
+$connect->query("INSERT INTO `user` (`id`,`step`,`money`,`subset`,`number`) VALUES ('$from_id',NULL,'0','0',NULL)");
+}
+SendMessage($from_id,"ð£ Ø¨Ù Ø´Ø±Ø·Ø¨ÙØ¯Û Ø³Ú©Ù Ø®ÙØ´ Ø§ÙØ¯ÛØ¯.
+
+Ø¨Ø±Ø§Û Ø´Ø±ÙØ¹ Ø¯Ú©ÙÙ ðØ´Ø±ÙØ¹ Ø´Ø±Ø·Ø¨ÙØ¯Ûð Ø±Ø§ Ø§ÙØªØ®Ø§Ø¨ Ú©ÙÛØ¯",$button);exit();
+}
+//bet-bot-v2 |.| Developer: 13 |||| instagram-id:@sizdahorg |||||| telegram-channel: 13HACK - @tmsizdah 
+
+if(strpos($setting['step'], "ozv-") !== false and isset($text) and $type == "private"){
+if($channel != '' and $tch != 'member' && $tch != 'creator' && $tch != 'administrator' and $type == "private"){
+SendMessage($from_id,"â ï¸ Ø¬ÙØª ÙØ¹Ø§ÙÛØª ÙÛØ§Ø² Ø§Ø³Øª Ø¯Ø± Ú©Ø§ÙØ§Ù Ø§Ø·ÙØ§Ø¹ Ø±Ø³Ø§ÙÛ Ø¹Ø¶Ù Ø´ÙÛØ¯.
+
+ð @$channel
+ð @$channel2
+
+â»ï¸ Ù¾Ø³ Ø§Ø² Ø¹Ø¶ÙÛØª Ø¯Ø± Ú©Ø§ÙØ§Ù ÙØ¬Ø¯Ø¯Ø§ Ø±Ø¨Ø§Øª Ø±Ø§ /start Ø§Ø±Ø³Ø§Ù ÙÙØ§ÛÛØ¯.",json_encode(['inline_keyboard' => [[['text' => "ÙØ±ÙØ¯ Ø¨Ù Ú©Ø§ÙØ§Ù Ø§ÙÙ",'url' => "https://t.me/$channel"]],[['text' => "ÙØ±ÙØ¯ Ø¨Ù Ú©Ø§ÙØ§Ù Ø¯ÙÙ",'url' => "https://t.me/$channel2"]],]]));exit();
+}else{
+$b = explode("-",$setting['step']);
+@$s = mysqli_fetch_assoc(mysqli_query($connect,"SELECT * FROM user WHERE id = '$b[1]' LIMIT 1"));
+$ez = $s['money']+100;
+$ez2 = $s['subset']+1;
+$connect->query("UPDATE user SET money = '$ez', subset = '$ez2' WHERE id = '$b[1]' LIMIT 1");
+SendMessage($b[1],"ÛÚ© Ø²ÛØ± ÙØ¬ÙÙØ¹Ù Ø§ÙÙØ¯ 100 Ø³Ú©Ù Ú¯Ø±ÙØªÛ");
+$connect->query("UPDATE user SET step = 'none' WHERE id = '$from_id' LIMIT 1");
+}}
+if($channel != '' and $tch != 'member' && $tch != 'creator' && $tch != 'administrator' and $type == "private"){
+SendMessage($from_id,"â ï¸ Ø¬ÙØª ÙØ¹Ø§ÙÛØª ÙÛØ§Ø² Ø§Ø³Øª Ø¯Ø± Ú©Ø§ÙØ§Ù Ø§Ø·ÙØ§Ø¹ Ø±Ø³Ø§ÙÛ Ø¹Ø¶Ù Ø´ÙÛØ¯.
+
+ð @$channel
+ð @$channel2
+
+â»ï¸ Ù¾Ø³ Ø§Ø² Ø¹Ø¶ÙÛØª Ø¯Ø± Ú©Ø§ÙØ§Ù ÙØ¬Ø¯Ø¯Ø§ Ø±Ø¨Ø§Øª Ø±Ø§ /start Ø§Ø±Ø³Ø§Ù ÙÙØ§ÛÛØ¯.",json_encode(['inline_keyboard' => [[['text' => "ÙØ±ÙØ¯ Ø¨Ù Ú©Ø§ÙØ§Ù Ø§ÙÙ",'url' => "https://t.me/$channel"]],[['text' => "ÙØ±ÙØ¯ Ø¨Ù Ú©Ø§ÙØ§Ù Ø¯ÙÙ",'url' => "https://t.me/$channel2"]],]]));
+exit();}
+if($text =="ðØ¨Ø§Ø²Ú¯Ø´Øª" and $type == "private"){
+$connect->query("UPDATE user SET step = 'none' WHERE id = '$from_id' LIMIT 1");
+SendMessage($from_id,"ÙØªÙ Ø¨Ø§Ø²Ú¯Ø´Øª",$button);
+}
+if($text =="ðØ´Ø±ÙØ¹ Ø´Ø±Ø·Ø¨ÙØ¯Ûð" and $type == "private"){
+SendMessage($from_id,"ÛÚ©Û Ø§Ø² Ø¨Ø§Ø²Û ÙØ§Ø±Ø§ Ø§ÙØªØ®Ø§Ø¨ Ú©ÙÛØ¯",$button_b);
+}
+if($text =="ð£ Ø§ÙÙØ¬Ø§Ø±" and $type == "private"){
+$connect->query("UPDATE user SET step = 'ex' WHERE id = '$from_id' LIMIT 1");
+SendMessage($from_id,"ð¤ ExplosionPanel :
+
+ð° ÙÙØ¯Ø§Ø± Ø³Ú©Ù Ú©Ù ÙÛØ®ÙØ§ÙÛØ¯ Ø´Ø±Ø· Ú©ÙÛØ¯ Ø±Ø§ Ø§Ø±Ø³Ø§Ù Ú©ÙÛØ¯ Ø­Ø¯Ø§ÙÙ 100 Ø³Ú©Ù ÙÛØ¨Ø§Ø´Ø¯.",json_encode(['keyboard'=>[[['text'=>"ðØ¨Ø§Ø²Ú¯Ø´Øª"]],],'resize_keyboard'=>true]));
+}
+if($setting['step'] == "ex" and is_numeric($text) and $type == "private"){
+if($text < 100){
+$connect->query("UPDATE user SET step = 'none' WHERE id = '$from_id' LIMIT 1");
+SendMessage($from_id,"â ÙÙØ¯Ø§Ø± Ø´Ø±Ø· ÙØ§ÙØ¹ØªØ¨Ø± Ø§Ø³Øª.(ÙØ·ÙØ§ Ø¨ØµÙØ±Øª ØµØ­ÛØ­ Ù ÙØ§ØªÛÙ Ù Ø¨Ø³ØªÙ Ø¨Ù ÙÙØ¬ÙØ¯Û Ø®ÙØ¯ ÙØ§Ø±Ø¯ Ú©ÙÛØ¯ Ø­Ø¯Ø§ÙÙ Ø´Ø±Ø· 100 Ø³Ú©Ù Ø§Ø³Øª.)",$button);exit();
+}else{
+if($text > $setting['money']){
+$connect->query("UPDATE user SET step = 'none' WHERE id = '$from_id' LIMIT 1");
+SendMessage($from_id,"ÙÙØ¬ÙØ¯Û Ú©Ø§ÙÛ ÙÛØ³Øª",$button);
+}else{
+$connect->query("UPDATE user SET step = 'ex2-$text' WHERE id = '$from_id' LIMIT 1");
+SendMessage($from_id,"ð² Ø¶Ø±ÛØ¨ ÙÙØ±Ø¯ ÙØ¸Ø± Ø®ÙØ¯ Ø±Ø§ Ø§Ø±Ø³Ø§Ù Ú©ÙÛØ¯.",json_encode(['keyboard'=>[[['text'=>"ðØ¨Ø§Ø²Ú¯Ø´Øª"]],],'resize_keyboard'=>true]));
+}}}
+elseif(strpos($setting['step'], "ex2-") !== false and is_numeric($text) and $text != "ðØ¨Ø§Ø²Ú¯Ø´Øª" and $type == "private"){
+$b = explode("-",$setting['step']);
+if($text >= 1.01 and $text <= 999.99){
+$z = rand(0,6);
+if($z == 5){
+$m = rand(1,89);
+$m = $text-"0.$m";
+$g = $b[1]*1.5;
+SendMessage($from_id,"ð¤ Explosion Bet:
+   
+ð¥ Ø¶Ø±ÛØ¨ Ø§ÛÙ Ø¯Ø³Øª Ø¯Ø± $m Ø¨Ø³ØªÙ Ø´Ø¯.
+
+ð° Ø´ÙØ§ ÙØ¨ÙØº $b[1] Ø³Ú©Ù Ø¨Ø±ÙØ¯Ù Ø´Ø¯ÛØ¯.
+
+ð£ Ø¶Ø±ÛØ¨ Ø¯Ø±Ø®ÙØ§Ø³ØªÛ Ø´ÙØ§ : $text",$button);
+$mo = $setting['money']+$g;
+$connect->query("UPDATE user SET money = '$mo', step = 'none' WHERE id = '$from_id' LIMIT 1");
+SendMessage($shart,"âÛÚ© Ø´Ø±Ø· Ø¨ÙØ¯Û Ø§ÙØ¬Ø§Ù Ø´Ø¯ Ù Ø¨Ø§ Ø¨Ø±Ø¯ ÙÙØ±Ø§Ù Ø¨ÙØ¯.
+âââââââ
+ðÙÙØ¹ Ø´Ø±Ø·: Ø§ÙÙØ¬Ø§Ø±
+ð¡Ø¢ÛØ¯Û Ø¹Ø¯Ø¯Û: <code>$from_id</code>
+ðÛÙØ²Ø±ÙÛÙ: @$username2
+ð£ÙÙØ¯Ø§Ø± Ø´Ø±Ø·: $b[1]
+ð°ÙÙØ¯Ø§Ø± Ø¨Ø±Ø¯: $g
+ðÙÙØ¬ÙØ¯Û Ø¬Ø¯ÛØ¯: $mo");exit();
+}else{
+$m = rand(1,89);
+$m = $text+"0.$m";
+SendMessage($from_id,"ð¤ Explosion Bet:
+   
+ð£ Ø¶Ø±ÛØ¨ Ø§ÛÙ Ø¯Ø³Øª Ø¯Ø± $m Ø¨Ø³ØªÙ Ø´Ø¯.
+
+â Ø´ÙØ§ ÙØ¨ÙØº $b[1] Ø³Ú©Ù Ø¨Ø§Ø®ØªÛØ¯.
+
+ð² Ø¶Ø±ÛØ¨ Ø¯Ø±Ø®ÙØ§Ø³ØªÛ Ø´ÙØ§ : $text",$button);
+$mo = $setting['money']-$b[1];
+$connect->query("UPDATE user SET money = '$mo', step = 'none' WHERE id = '$from_id' LIMIT 1");
+SendMessage($shart,"âÛÚ© Ø´Ø±Ø· Ø¨ÙØ¯Û Ø§ÙØ¬Ø§Ù Ø´Ø¯ Ù Ø¨Ø§ Ø¨Ø§Ø®Øª ÙÙØ±Ø§Ù Ø¨ÙØ¯.
+âââââââ
+ðÙÙØ¹ Ø´Ø±Ø·: Ø§ÙÙØ¬Ø§Ø±
+ð¡Ø¢ÛØ¯Û Ø¹Ø¯Ø¯Û: <code>$from_id</code>
+ðÛÙØ²Ø±ÙÛÙ: @$username2
+ð°ÙÙØ¯Ø§Ø± Ø¨Ø§Ø®Øª: $b[1]
+ðÙÙØ¬ÙØ¯Û Ø¬Ø¯ÛØ¯: $mo");exit();
+}}else{
+$connect->query("UPDATE user SET step = 'none' WHERE id = '$from_id' LIMIT 1");
+SendMessage($from_id,"â Ø¶Ø±ÛØ¨ Ø§Ø±Ø³Ø§Ù ØµØ­ÛØ­ ÙÛØ³Øª Ø­Ø¯Ø§ÙÙ Ø¶Ø±ÛØ¨ 1.01 Ù Ø­Ø¯Ø§Ú©Ø«Ø± 999.99 ÙÛØ¨Ø§Ø´Ø¯.",$button);exit();
+}}
+if($text =="ð¢ ÙÙÙØªÛ" and $type == "private"){
+$connect->query("UPDATE user SET step = 'mo' WHERE id = '$from_id' LIMIT 1");
+SendMessage($from_id,"ð¤ CrashPanel :
+
+ð° ÙÙØ¯Ø§Ø± Ø³Ú©Ù Ú©Ù ÙÛØ®ÙØ§ÙÛØ¯ Ø´Ø±Ø· Ú©ÙÛØ¯ Ø±Ø§ Ø§Ø±Ø³Ø§Ù Ú©ÙÛØ¯ Ø­Ø¯Ø§ÙÙ 100 Ø³Ú©Ù ÙÛØ¨Ø§Ø´Ø¯.",json_encode(['keyboard'=>[[['text'=>"ðØ¨Ø§Ø²Ú¯Ø´Øª"]],],'resize_keyboard'=>true]));
+}
+if($setting['step'] == "mo" and is_numeric($text) and $type == "private"){
+if($text < 100){
+$connect->query("UPDATE user SET step = 'none' WHERE id = '$from_id' LIMIT 1");
+SendMessage($from_id,"â ÙÙØ¯Ø§Ø± Ø´Ø±Ø· ÙØ§ÙØ¹ØªØ¨Ø± Ø§Ø³Øª.(ÙØ·ÙØ§ Ø¨ØµÙØ±Øª ØµØ­ÛØ­ Ù ÙØ§ØªÛÙ Ù Ø¨Ø³ØªÙ Ø¨Ù ÙÙØ¬ÙØ¯Û Ø®ÙØ¯ ÙØ§Ø±Ø¯ Ú©ÙÛØ¯ Ø­Ø¯Ø§ÙÙ Ø´Ø±Ø· 100 Ø³Ú©Ù Ø§Ø³Øª.)",$button);exit();
+}else{
+if($text > $setting['money']){
+$connect->query("UPDATE user SET step = 'none' WHERE id = '$from_id' LIMIT 1");
+SendMessage($from_id,"ÙÙØ¬ÙØ¯Û Ú©Ø§ÙÛ ÙÛØ³Øª",$button);
+}else{
+$connect->query("UPDATE user SET step = 'm-$text' WHERE id = '$from_id' LIMIT 1");
+SendMessage($from_id,"ð¤ Monti Panel :
+
+ð¢ Ú¯Ø²ÛÙÙ ÙÙØ±Ø¯ ÙØ¸Ø± Ø®ÙØ¯ Ø±Ø§ Ù¾ÛØ´Ø¨ÛÙÛ Ú©ÙÛØ¯:",json_encode(['keyboard'=>[[['text'=>"Ø¹Ø¯Ø¯ Ø´Ø§ÙØ³ Ø¨ÛØ´ØªØ± Ø§Ø² 50"],['text'=>"Ø¹Ø¯Ø¯ Ø´Ø§ÙØ³ Ú©ÙØªØ± Ø§Ø² 50"]],[['text'=>"ðØ¨Ø§Ø²Ú¯Ø´Øª"]],],'resize_keyboard'=>true]));
+}}}
+elseif(strpos($setting['step'], "m-") !== false and $text != "ðØ¨Ø§Ø²Ú¯Ø´Øª" and $type == "private"){
+$b = explode("-",$setting['step']);
+if($text == "Ø¹Ø¯Ø¯ Ø´Ø§ÙØ³ Ú©ÙØªØ± Ø§Ø² 50"){
+$a = rand(51,100);
+if($a < 50){
+$g = $b[1]*1.5;
+SendMessage($from_id,"ð¤ Panel Bet:
+   
+ð¢  Ø§ÛÙ Ø¯Ø³Øª Ø¯Ø± $a Ø¨Ø³ØªÙ Ø´Ø¯.
+
+ð° Ø´ÙØ§ Ø³Ú©Ù $g Ø¨Ø±ÙØ¯Ù Ø´Ø¯ÛØ¯.
+
+ð² Ú¯Ø²ÛÙÙ Ø¯Ø±Ø®ÙØ§Ø³ØªÛ Ø´ÙØ§ : Ú©ÙØªØ± Ø§Ø² 50",$button);
+$mo = $setting['money']+$g;
+$connect->query("UPDATE user SET money = '$mo', step = 'none' WHERE id = '$from_id' LIMIT 1");
+SendMessage($shart,"âÛÚ© Ø´Ø±Ø· Ø¨ÙØ¯Û Ø§ÙØ¬Ø§Ù Ø´Ø¯ Ù Ø¨Ø§ Ø¨Ø±Ø¯ ÙÙØ±Ø§Ù Ø¨ÙØ¯.
+âââââââ
+ðÙÙØ¹ Ø´Ø±Ø·: ÙÙÙØªÛ
+ð¡Ø¢ÛØ¯Û Ø¹Ø¯Ø¯Û: <code>$from_id</code>
+ðÛÙØ²Ø±ÙÛÙ: @$username2
+ð£ÙÙØ¯Ø§Ø± Ø´Ø±Ø·: $b[1]
+ð°ÙÙØ¯Ø§Ø± Ø¨Ø±Ø¯: $g
+ðÙÙØ¬ÙØ¯Û Ø¬Ø¯ÛØ¯: $mo");exit();
+}else{
+SendMessage($from_id,"ð¤ Panel Monti:
+   
+ð¢ Ø¹Ø¯Ø¯ Ø§ÛÙ Ø¯Ø³Øª Ø¯Ø± $a Ø¨Ø³ØªÙ Ø´Ø¯.
+
+â Ø´ÙØ§ ÙØ¨ÙØº $b[1] Ø³Ú©Ù Ø¨Ø§Ø®ØªÛØ¯.
+
+ð² Ú¯Ø²ÛÙÙ Ø¯Ø±Ø®ÙØ§Ø³ØªÛ Ø´ÙØ§ : Ú©ÙØªØ± Ø§Ø² 50",$button);
+$mo = $setting['money']-$b[1];
+$connect->query("UPDATE user SET money = '$mo', step = 'none' WHERE id = '$from_id' LIMIT 1");
+SendMessage($shart,"âÛÚ© Ø´Ø±Ø· Ø¨ÙØ¯Û Ø§ÙØ¬Ø§Ù Ø´Ø¯ Ù Ø¨Ø§ Ø¨Ø§Ø®Øª ÙÙØ±Ø§Ù Ø¨ÙØ¯.
+âââââââ
+ðÙÙØ¹ Ø´Ø±Ø·: ÙÙÙØªÛ
+ð¡Ø¢ÛØ¯Û Ø¹Ø¯Ø¯Û: <code>$from_id</code>
+ðÛÙØ²Ø±ÙÛÙ: @$username2
+ð°ÙÙØ¯Ø§Ø± Ø¨Ø§Ø®Øª: $b[1]
+ðÙÙØ¬ÙØ¯Û Ø¬Ø¯ÛØ¯: $mo");exit();
+}}
+if($text == "Ø¹Ø¯Ø¯ Ø´Ø§ÙØ³ Ø¨ÛØ´ØªØ± Ø§Ø² 50"){
+$a = rand(1,49);
+if($a > 50){
+$g = $b[1]*1.5;
+SendMessage($from_id,"ð¤ Panel Bet:
+   
+ð¢  Ø§ÛÙ Ø¯Ø³Øª Ø¯Ø± $a Ø¨Ø³ØªÙ Ø´Ø¯.
+
+ð° Ø´ÙØ§ ÙØ¨ÙØº $g Ø¨Ø±ÙØ¯Ù Ø´Ø¯ÛØ¯.
+
+ð² Ú¯Ø²ÛÙÙ Ø¯Ø±Ø®ÙØ§Ø³ØªÛ Ø´ÙØ§ : Ø¨ÛØ´ØªØ± Ø§Ø² 50",$button);
+$mo = $setting['money']+$g;
+$connect->query("UPDATE user SET money = '$mo', step = 'none' WHERE id = '$from_id' LIMIT 1");
+SendMessage($shart,"âÛÚ© Ø´Ø±Ø· Ø¨ÙØ¯Û Ø§ÙØ¬Ø§Ù Ø´Ø¯ Ù Ø¨Ø§ Ø¨Ø±Ø¯ ÙÙØ±Ø§Ù Ø¨ÙØ¯.
+âââââââ
+ðÙÙØ¹ Ø´Ø±Ø·: ÙÙÙØªÛ
+ð¡Ø¢ÛØ¯Û Ø¹Ø¯Ø¯Û: <code>$from_id</code>
+ðÛÙØ²Ø±ÙÛÙ: @$username2
+ð£ÙÙØ¯Ø§Ø± Ø´Ø±Ø·: $b[1]
+ð°ÙÙØ¯Ø§Ø± Ø¨Ø±Ø¯: $g
+ðÙÙØ¬ÙØ¯Û Ø¬Ø¯ÛØ¯: $mo");exit();
+}else{
+SendMessage($from_id,"ð¤ Panel Monti:
+   
+ð¢ Ø¹Ø¯Ø¯ Ø§ÛÙ Ø¯Ø³Øª Ø¯Ø± $a Ø¨Ø³ØªÙ Ø´Ø¯.
+
+â Ø´ÙØ§ ÙØ¨ÙØº $b[1] ØªÙÙØ§Ù Ø¨Ø§Ø®ØªÛØ¯.
+
+ð² Ú¯Ø²ÛÙÙ Ø¯Ø±Ø®ÙØ§Ø³ØªÛ Ø´ÙØ§ : Ø¨ÛØ´ØªØ± Ø§Ø² 50",$button);
+$mo = $setting['money']-$b[1];
+$connect->query("UPDATE user SET money = '$mo', step = 'none' WHERE id = '$from_id' LIMIT 1");
+SendMessage($shart,"âÛÚ© Ø´Ø±Ø· Ø¨ÙØ¯Û Ø§ÙØ¬Ø§Ù Ø´Ø¯ Ù Ø¨Ø§ Ø¨Ø§Ø®Øª ÙÙØ±Ø§Ù Ø¨ÙØ¯.
+âââââââ
+ðÙÙØ¹ Ø´Ø±Ø·: ÙÙÙØªÛ
+ð¡Ø¢ÛØ¯Û Ø¹Ø¯Ø¯Û: <code>$from_id</code>
+ðÛÙØ²Ø±ÙÛÙ: @$username2
+ð°ÙÙØ¯Ø§Ø± Ø¨Ø§Ø®Øª: $b[1]
+ðÙÙØ¬ÙØ¯Û Ø¬Ø¯ÛØ¯: $mo");exit();
+}}}
+if($text =="ð³ Ø¨ÙÙÛÙÚ¯" and $type == "private"){
+$connect->query("UPDATE user SET step = 'boling' WHERE id = '$from_id' LIMIT 1");
+SendMessage($from_id,"ð³BollingPanel :
+
+ð° ÙÙØ¯Ø§Ø± Ø³Ú©Ù Ú©Ù ÙÛØ®ÙØ§ÙÛØ¯ Ø´Ø±Ø· Ú©ÙÛØ¯ Ø±Ø§ Ø§Ø±Ø³Ø§Ù Ú©ÙÛØ¯ Ø­Ø¯Ø§ÙÙ 100 Ø³Ú©Ù ÙÛØ¨Ø§Ø´Ø¯.",json_encode(['keyboard'=>[[['text'=>"ðØ¨Ø§Ø²Ú¯Ø´Øª"]],],'resize_keyboard'=>true]));
+}
+//bet-bot-v2 |.| Developer: 13 |||| instagram-id:@sizdahorg |||||| telegram-channel: 13HACK - @tmsizdah 
+
+if($setting['step'] == "boling" and is_numeric($text) and $type == "private"){
+if($text < 100){
+$connect->query("UPDATE user SET step = 'none' WHERE id = '$from_id' LIMIT 1");
+SendMessage($from_id,"â ÙÙØ¯Ø§Ø± Ø´Ø±Ø· ÙØ§ÙØ¹ØªØ¨Ø± Ø§Ø³Øª.(ÙØ·ÙØ§ Ø¨ØµÙØ±Øª ØµØ­ÛØ­ Ù ÙØ§ØªÛÙ Ù Ø¨Ø³ØªÙ Ø¨Ù ÙÙØ¬ÙØ¯Û Ø®ÙØ¯ ÙØ§Ø±Ø¯ Ú©ÙÛØ¯ Ø­Ø¯Ø§ÙÙ Ø´Ø±Ø· 100 Ø³Ú©Ù Ø§Ø³Øª.)",$button);exit();
+}else{
+if($text > $setting['money']){
+$connect->query("UPDATE user SET step = 'none' WHERE id = '$from_id' LIMIT 1");
+SendMessage($from_id,"ÙÙØ¬ÙØ¯Û Ú©Ø§ÙÛ ÙÛØ³Øª",$button);
+}else{
+$connect->query("UPDATE user SET step = 'boling-$text' WHERE id = '$from_id' LIMIT 1");
+SendMessage($from_id,"ð Ø¬ÙØª Ø´Ø±ÙØ¹ Ø±ÙÛ Ø¯Ú©ÙÙ âØ§ÙØ¬Ø§Ù Ú©ÙÛÚ© Ú©ÙÛØ¯:",json_encode(['keyboard'=>[[['text'=>"âØ§ÙØ¬Ø§Ù"]],[['text'=>"ðØ¨Ø§Ø²Ú¯Ø´Øª"]],],'resize_keyboard'=>true]));
+}}}
+elseif(strpos($setting['step'], "boling-") !== false and $text == "âØ§ÙØ¬Ø§Ù" and $type == "private"){
+$b = explode("-",$setting['step']);
+$dice = bot('sendDice',['chat_id' => $from_id,'emoji'=> 'ð³']);
+$value = $dice->result->dice->value;
+if($value==6){
+$g = $b[1]*1.5;
+sleep(3);
+SendMessage($from_id,"ð¤Bolling Bet:
+   
+ð³ Ø´ÙØ§ ÙØ¨ÙØº $g ØªÙÙØ§Ù Ø¨Ø±ÙØ¯Ù Ø´Ø¯ÛØ¯.",$button);
+$mo = $setting['money']+$g;
+$connect->query("UPDATE user SET money = '$mo', step = 'none' WHERE id = '$from_id' LIMIT 1");
+SendMessage($SIZDAHORG,"âÛÚ© Ø´Ø±Ø· Ø¨ÙØ¯Û Ø§ÙØ¬Ø§Ù Ø´Ø¯ Ù Ø¨Ø§ Ø¨Ø±Ø¯ ÙÙØ±Ø§Ù Ø¨ÙØ¯.
+âââââââ
+ðÙÙØ¹ Ø´Ø±Ø·: Ø¨ÙÙÛÙÚ¯
+ð¡Ø¢ÛØ¯Û Ø¹Ø¯Ø¯Û: <code>$from_id</code>
+ðÛÙØ²Ø±ÙÛÙ: @$username2
+ð£ÙÙØ¯Ø§Ø± Ø´Ø±Ø·: $b[1]
+ð°ÙÙØ¯Ø§Ø± Ø¨Ø±Ø¯: $g
+ðÙÙØ¬ÙØ¯Û Ø¬Ø¯ÛØ¯: $mo");exit();
+}else{
+    sleep(3);
+SendMessage($from_id,"ð¤Bolling Bet:
+   
+ð³ Ø´ÙØ§ ÙÙØ¯Ø§Ø± $b[1] Ø³Ú©Ù Ø¨Ø§Ø®ØªÛØ¯.",$button);
+$mo = $setting['money']-$b[1];
+$connect->query("UPDATE user SET money = '$mo', step = 'none' WHERE id = '$from_id' LIMIT 1");
+SendMessage($SIZDAHORG,"âÛÚ© Ø´Ø±Ø· Ø¨ÙØ¯Û Ø§ÙØ¬Ø§Ù Ø´Ø¯ Ù Ø¨Ø§ Ø¨Ø§Ø®Øª ÙÙØ±Ø§Ù Ø¨ÙØ¯.
+âââââââ
+ðÙÙØ¹ Ø´Ø±Ø·: Ø¨ÙÙÛÙÚ¯
+ð¡Ø¢ÛØ¯Û Ø¹Ø¯Ø¯Û: <code>$from_id</code>
+ðÛÙØ²Ø±ÙÛÙ: @$username2
+ð°ÙÙØ¯Ø§Ø± Ø¨Ø§Ø®Øª: $b[1]
+ðÙÙØ¬ÙØ¯Û Ø¬Ø¯ÛØ¯: $mo");exit();
+}}
+if($text =="ð² ØªØ§Ø³" and $type == "private"){
+$connect->query("UPDATE user SET step = 'do' WHERE id = '$from_id' LIMIT 1");
+SendMessage($from_id,"ð² DicePanel :
+
+ð° ÙÙØ¯Ø§Ø± Ø³Ú©Ù Ú©Ù ÙÛØ®ÙØ§ÙÛØ¯ Ø´Ø±Ø· Ú©ÙÛØ¯ Ø±Ø§ Ø§Ø±Ø³Ø§Ù Ú©ÙÛØ¯ Ø­Ø¯Ø§ÙÙ 100 Ø³Ú©Ù ÙÛØ¨Ø§Ø´Ø¯.",json_encode(['keyboard'=>[[['text'=>"ðØ¨Ø§Ø²Ú¯Ø´Øª"]],],'resize_keyboard'=>true]));
+}
+if($setting['step'] == "do" and is_numeric($text) and $type == "private"){
+if($text < 100){
+$connect->query("UPDATE user SET step = 'none' WHERE id = '$from_id' LIMIT 1");
+SendMessage($from_id,"â ÙÙØ¯Ø§Ø± Ø´Ø±Ø· ÙØ§ÙØ¹ØªØ¨Ø± Ø§Ø³Øª.(ÙØ·ÙØ§ Ø¨ØµÙØ±Øª ØµØ­ÛØ­ Ù ÙØ§ØªÛÙ Ù Ø¨Ø³ØªÙ Ø¨Ù ÙÙØ¬ÙØ¯Û Ø®ÙØ¯ ÙØ§Ø±Ø¯ Ú©ÙÛØ¯ Ø­Ø¯Ø§ÙÙ Ø´Ø±Ø· 100 Ø³Ú©Ù Ø§Ø³Øª.)",$button);exit();
+}else{
+if($text > $setting['money']){
+$connect->query("UPDATE user SET step = 'none' WHERE id = '$from_id' LIMIT 1");
+SendMessage($from_id,"ÙÙØ¬ÙØ¯Û Ú©Ø§ÙÛ ÙÛØ³Øª",$button);
+}else{
+$connect->query("UPDATE user SET step = 'd-$text' WHERE id = '$from_id' LIMIT 1");
+SendMessage($from_id,"ð² Ø¨ÙØ¸Ø± Ø´ÙØ§ Ø¹Ø¯Ø¯ ØªØ§Ø³ Ø¨Ø± Ø±ÙÛ ÚÙØ¯ ÙÛ Ø§ÛØ³ØªØ¯Ø",json_encode(['keyboard'=>[[['text'=>"ðØ¨Ø§Ø²Ú¯Ø´Øª"]],],'resize_keyboard'=>true]));
+}}}
+elseif(strpos($setting['step'], "d-") !== false and is_numeric($text) and $text != "ðØ¨Ø§Ø²Ú¯Ø´Øª" and $type == "private"){
+if($text <= 6 and $text >= 1){
+$b = explode("-",$setting['step']);
+$dice = bot('sendDice',['chat_id' => $from_id,'emoji'=> 'ð²']);
+$value = $dice->result->dice->value;
+if($text == $value){
+$g = $b[1]*1.5;
+sleep(3);
+SendMessage($from_id,"ð¤ Dice Bet:
+   
+â Ø­Ø¯Ø³ Ø´ÙØ§ Ø¯Ø±Ø³Øª Ø¨ÙØ¯!
+
+ð° Ø´ÙØ§ Ø³Ú©Ù $g Ø¨Ø±ÙØ¯Ù Ø´Ø¯ÛØ¯.",$button);
+$mo = $setting['money']+$g;
+$connect->query("UPDATE user SET money = '$mo', step = 'none' WHERE id = '$from_id' LIMIT 1");
+SendMessage($SIZDAHORG,"âÛÚ© Ø´Ø±Ø· Ø¨ÙØ¯Û Ø§ÙØ¬Ø§Ù Ø´Ø¯ Ù Ø¨Ø§ Ø¨Ø±Ø¯ ÙÙØ±Ø§Ù Ø¨ÙØ¯.
+âââââââ
+ðÙÙØ¹ Ø´Ø±Ø·: ØªØ§Ø³
+ð¡Ø¢ÛØ¯Û Ø¹Ø¯Ø¯Û: <code>$from_id</code>
+ðÛÙØ²Ø±ÙÛÙ: @$username2
+ð£ÙÙØ¯Ø§Ø± Ø´Ø±Ø·: $b[1]
+ð°ÙÙØ¯Ø§Ø± Ø¨Ø±Ø¯: $g
+ðÙÙØ¬ÙØ¯Û Ø¬Ø¯ÛØ¯: $mo");exit();
+}else{
+    sleep(3);
+SendMessage($from_id,"ð¤ Dice Bet:
+   
+â Ø´ÙØ§ ÙÙØ¯Ø§Ø± $b[1] Ø³Ú©Ù Ø¨Ø§Ø®ØªÛØ¯.
+
+ð² Ø¹Ø¯Ø¯ Ù¾ÛØ´Ø¨ÛÙÛ Ø´Ø¯Ù : $text
+
+ð² Ø¹Ø¯Ø¯ ØªØ§Ø³ Ø§ÛÙ Ø¯Ø³Øª : $value",$button);
+$mo = $setting['money']-$b[1];
+$connect->query("UPDATE user SET money = '$mo', step = 'none' WHERE id = '$from_id' LIMIT 1");
+SendMessage($SIZDAHORG,"âÛÚ© Ø´Ø±Ø· Ø¨ÙØ¯Û Ø§ÙØ¬Ø§Ù Ø´Ø¯ Ù Ø¨Ø§ Ø¨Ø§Ø®Øª ÙÙØ±Ø§Ù Ø¨ÙØ¯.
+âââââââ
+ðÙÙØ¹ Ø´Ø±Ø·: ØªØ§Ø³
+ð¡Ø¢ÛØ¯Û Ø¹Ø¯Ø¯Û: <code>$from_id</code>
+ðÛÙØ²Ø±ÙÛÙ: @$username2
+ð°ÙÙØ¯Ø§Ø± Ø¨Ø§Ø®Øª: $b[1]
+ðÙÙØ¬ÙØ¯Û Ø¬Ø¯ÛØ¯: $mo");exit();
+}}else{
+$connect->query("UPDATE user SET step = 'none' WHERE id = '$from_id' LIMIT 1");
+SendMessage($from_id,"â Ø¹Ø¯Ø¯ Ø§Ø±Ø³Ø§ÙÛ ØµØ­ÛØ­ ÙÛØ³Øª Ø­Ø¯Ø§ÙÙ Ø¹Ø¯Ø¯ 1 Ù Ø­Ø¯Ø§Ú©Ø«Ø± 6 ÙÛØ¨Ø§Ø´Ø¯.",$button);exit();
+}}
+if($text =="ð¯ Ø¯Ø§Ø±Øª" and $type == "private"){
+$connect->query("UPDATE user SET step = 'da' WHERE id = '$from_id' LIMIT 1");
+SendMessage($from_id,"ð¯ DartPanel :
+
+ð° ÙÙØ¯Ø§Ø± Ø³Ú©Ù Ú©Ù ÙÛØ®ÙØ§ÙÛØ¯ Ø´Ø±Ø· Ú©ÙÛØ¯ Ø±Ø§ Ø§Ø±Ø³Ø§Ù Ú©ÙÛØ¯ Ø­Ø¯Ø§ÙÙ 100 Ø³Ú©Ù ÙÛØ¨Ø§Ø´Ø¯.",json_encode(['keyboard'=>[[['text'=>"ðØ¨Ø§Ø²Ú¯Ø´Øª"]],],'resize_keyboard'=>true]));
+}
+//bet-bot-v2 |.| Developer: 13 |||| instagram-id:@sizdahorg |||||| telegram-channel: 13HACK - @tmsizdah 
+
+if($setting['step'] == "da" and is_numeric($text) and $type == "private"){
+if($text < 100){
+$connect->query("UPDATE user SET step = 'none' WHERE id = '$from_id' LIMIT 1");
+SendMessage($from_id,"â ÙÙØ¯Ø§Ø± Ø´Ø±Ø· ÙØ§ÙØ¹ØªØ¨Ø± Ø§Ø³Øª.(ÙØ·ÙØ§ Ø¨ØµÙØ±Øª ØµØ­ÛØ­ Ù ÙØ§ØªÛÙ Ù Ø¨Ø³ØªÙ Ø¨Ù ÙÙØ¬ÙØ¯Û Ø®ÙØ¯ ÙØ§Ø±Ø¯ Ú©ÙÛØ¯ Ø­Ø¯Ø§ÙÙ Ø´Ø±Ø· 100 Ø³Ú©Ù Ø§Ø³Øª.)",$button);exit();
+}else{
+if($text > $setting['money']){
+$connect->query("UPDATE user SET step = 'none' WHERE id = '$from_id' LIMIT 1");
+SendMessage($from_id,"ÙÙØ¬ÙØ¯Û Ú©Ø§ÙÛ ÙÛØ³Øª",$button);
+}else{
+$connect->query("UPDATE user SET step = 'dar-$text' WHERE id = '$from_id' LIMIT 1");
+SendMessage($from_id,"ð Ø¬ÙØª Ø´Ø±ÙØ¹ Ø±ÙÛ Ø¯Ú©ÙÙ âØ§ÙØ¬Ø§Ù Ú©ÙÛÚ© Ú©ÙÛØ¯:",json_encode(['keyboard'=>[[['text'=>"âØ§ÙØ¬Ø§Ù"]],[['text'=>"ðØ¨Ø§Ø²Ú¯Ø´Øª"]],],'resize_keyboard'=>true]));
+}}}
+elseif(strpos($setting['step'], "dar-") !== false and $text == "âØ§ÙØ¬Ø§Ù" and $type == "private"){
+$b = explode("-",$setting['step']);
+$dice = bot('sendDice',['chat_id' => $from_id,'emoji'=> 'ð¯']);
+$value = $dice->result->dice->value;
+if($value==6){
+$g = $b[1]*1.5;
+sleep(3);
+SendMessage($from_id,"ð¤ Dart Bet:
+   
+ð¯ Ø´ÙØ§ ÙØ¨ÙØº $g ØªÙÙØ§Ù Ø¨Ø±ÙØ¯Ù Ø´Ø¯ÛØ¯.",$button);
+$mo = $setting['money']+$g;
+$connect->query("UPDATE user SET money = '$mo', step = 'none' WHERE id = '$from_id' LIMIT 1");
+SendMessage($SIZDAHORG,"âÛÚ© Ø´Ø±Ø· Ø¨ÙØ¯Û Ø§ÙØ¬Ø§Ù Ø´Ø¯ Ù Ø¨Ø§ Ø¨Ø±Ø¯ ÙÙØ±Ø§Ù Ø¨ÙØ¯.
+âââââââ
+ðÙÙØ¹ Ø´Ø±Ø·: Ø¯Ø§Ø±Øª
+ð¡Ø¢ÛØ¯Û Ø¹Ø¯Ø¯Û: <code>$from_id</code>
+ðÛÙØ²Ø±ÙÛÙ: @$username2
+ð£ÙÙØ¯Ø§Ø± Ø´Ø±Ø·: $b[1]
+ð°ÙÙØ¯Ø§Ø± Ø¨Ø±Ø¯: $g
+ðÙÙØ¬ÙØ¯Û Ø¬Ø¯ÛØ¯: $mo");exit();
+}else{
+SendMessage($from_id,"ð¤ Dart Bet:
+   
+ð¯ Ø´ÙØ§ ÙÙØ¯Ø§Ø± $b[1] Ø³Ú©Ù Ø¨Ø§Ø®ØªÛØ¯.",$button);
+$mo = $setting['money']-$b[1];
+$connect->query("UPDATE user SET money = '$mo', step = 'none' WHERE id = '$from_id' LIMIT 1");
+SendMessage($SIZDAHORG,"âÛÚ© Ø´Ø±Ø· Ø¨ÙØ¯Û Ø§ÙØ¬Ø§Ù Ø´Ø¯ Ù Ø¨Ø§ Ø¨Ø§Ø®Øª ÙÙØ±Ø§Ù Ø¨ÙØ¯.
+âââââââ
+ðÙÙØ¹ Ø´Ø±Ø·: Ø¯Ø§Ø±Øª
+ð¡Ø¢ÛØ¯Û Ø¹Ø¯Ø¯Û: <code>$from_id</code>
+ðÛÙØ²Ø±ÙÛÙ: @$username2
+ð°ÙÙØ¯Ø§Ø± Ø¨Ø§Ø®Øª: $b[1]
+ðÙÙØ¬ÙØ¯Û Ø¬Ø¯ÛØ¯: $mo");exit();
+}}
+
+//bet-bot-v2 |.| Developer: 13 |||| instagram-id:@sizdahorg |||||| telegram-channel: 13HACK - @tmsizdah 
+
+if($text =="ð° ÙØ§Ø´ÛÙ Ø§Ø³Ú©Ø§Øª" and $type == "private"){
+$connect->query("UPDATE user SET step = 'scat' WHERE id = '$from_id' LIMIT 1");
+SendMessage($from_id,"ð° ScatPanel :
+
+ð° ÙÙØ¯Ø§Ø± Ø³Ú©Ù Ú©Ù ÙÛØ®ÙØ§ÙÛØ¯ Ø´Ø±Ø· Ú©ÙÛØ¯ Ø±Ø§ Ø§Ø±Ø³Ø§Ù Ú©ÙÛØ¯ Ø­Ø¯Ø§ÙÙ 100 Ø³Ú©Ù ÙÛØ¨Ø§Ø´Ø¯.",json_encode(['keyboard'=>[[['text'=>"ðØ¨Ø§Ø²Ú¯Ø´Øª"]],],'resize_keyboard'=>true]));
+}
+if($setting['step'] == "scat" and is_numeric($text) and $type == "private"){
+if($text < 100){
+$connect->query("UPDATE user SET step = 'none' WHERE id = '$from_id' LIMIT 1");
+SendMessage($from_id,"â ÙÙØ¯Ø§Ø± Ø´Ø±Ø· ÙØ§ÙØ¹ØªØ¨Ø± Ø§Ø³Øª.(ÙØ·ÙØ§ Ø¨ØµÙØ±Øª ØµØ­ÛØ­ Ù ÙØ§ØªÛÙ Ù Ø¨Ø³ØªÙ Ø¨Ù ÙÙØ¬ÙØ¯Û Ø®ÙØ¯ ÙØ§Ø±Ø¯ Ú©ÙÛØ¯ Ø­Ø¯Ø§ÙÙ Ø´Ø±Ø· 100 Ø³Ú©Ù Ø§Ø³Øª.)",$button);exit();
+}else{
+if($text > $setting['money']){
+$connect->query("UPDATE user SET step = 'none' WHERE id = '$from_id' LIMIT 1");
+SendMessage($from_id,"ÙÙØ¬ÙØ¯Û Ú©Ø§ÙÛ ÙÛØ³Øª",$button);
+}else{
+$connect->query("UPDATE user SET step = 'sct-$text' WHERE id = '$from_id' LIMIT 1");
+SendMessage($from_id,"ð Ø¬ÙØª Ø´Ø±ÙØ¹ Ø±ÙÛ Ø¯Ú©ÙÙ âØ§ÙØ¬Ø§Ù Ú©ÙÛÚ© Ú©ÙÛØ¯:",json_encode(['keyboard'=>[[['text'=>"âØ§ÙØ¬Ø§Ù"]],[['text'=>"ðØ¨Ø§Ø²Ú¯Ø´Øª"]],],'resize_keyboard'=>true]));
+}}}
+elseif(strpos($setting['step'], "sct-") !== false and $text == "âØ§ÙØ¬Ø§Ù" and $type == "private"){
+$b = explode("-",$setting['step']);
+$dice = bot('sendDice',['chat_id' => $from_id,'emoji'=> 'ð°']);
+$value = $dice->result->dice->value;
+if($value == 64){
+$g = $b[1]*1.5;
+sleep(4);
+SendMessage($from_id,"ð¤ Scat Bet:
+   
+ð¯ Ø´ÙØ§ ÙÙØ¯Ø§Ø± $g Ø³Ú©Ù Ø¨Ø±ÙØ¯Ù Ø´Ø¯ÛØ¯.",$button);
+$mo = $setting['money']+$g;
+$connect->query("UPDATE user SET money = '$mo', step = 'none' WHERE id = '$from_id' LIMIT 1");
+SendMessage($SIZDAHORG,"âÛÚ© Ø´Ø±Ø· Ø¨ÙØ¯Û Ø§ÙØ¬Ø§Ù Ø´Ø¯ Ù Ø¨Ø§ Ø¨Ø±Ø¯ ÙÙØ±Ø§Ù Ø¨ÙØ¯.
+âââââââ
+ðÙÙØ¹ Ø´Ø±Ø·: Ø§Ø³Ú©Ø§Øª
+ð¡Ø¢ÛØ¯Û Ø¹Ø¯Ø¯Û: <code>$from_id</code>
+ðÛÙØ²Ø±ÙÛÙ: @$username2
+ð£ÙÙØ¯Ø§Ø± Ø´Ø±Ø·: $b[1]
+ð°ÙÙØ¯Ø§Ø± Ø¨Ø±Ø¯: $g
+ðÙÙØ¬ÙØ¯Û Ø¬Ø¯ÛØ¯: $mo");exit();
+}else{
+SendMessage($from_id,"ð¤ Scat Bet:
+   
+ð¯ Ø´ÙØ§ ÙÙØ¯Ø§Ø± $b[1] Ø³Ú©Ù Ø¨Ø§Ø®ØªÛØ¯.",$button);
+$mo = $setting['money']-$b[1];
+$connect->query("UPDATE user SET money = '$mo', step = 'none' WHERE id = '$from_id' LIMIT 1");
+SendMessage($SIZDAHORG,"âÛÚ© Ø´Ø±Ø· Ø¨ÙØ¯Û Ø§ÙØ¬Ø§Ù Ø´Ø¯ Ù Ø¨Ø§ Ø¨Ø§Ø®Øª ÙÙØ±Ø§Ù Ø¨ÙØ¯.
+âââââââ
+ðÙÙØ¹ Ø´Ø±Ø·: Ø§Ø³Ú©Ø§Øª
+ð¡Ø¢ÛØ¯Û Ø¹Ø¯Ø¯Û: <code>$from_id</code>
+ðÛÙØ²Ø±ÙÛÙ: @$username2
+ð°ÙÙØ¯Ø§Ø± Ø¨Ø§Ø®Øª: $b[1]
+ðÙÙØ¬ÙØ¯Û Ø¬Ø¯ÛØ¯: $mo");exit();
+}}
+elseif($text =="ð¥Ø¨Ø±Ø¯Ø§Ø´Øª ÙÙØ¬ÙØ¯Ûð¥" and $type == "private"){
+if($setting['money'] >= 5000){
+$connect->query("UPDATE user SET step = 'tasfe' WHERE id = '$from_id' LIMIT 1");
+SendMessage($from_id,"ÙØ·ÙØ§ ÙÙØ¹ Ø¨Ø±Ø¯Ø§Ø´Øª Ø±Ø§ Ø§ÙØªØ®Ø§Ø¨ ÙÙØ§ÛÛØ¯:",$button_ts);
+}else{
+$connect->query("UPDATE user SET step = 'none' WHERE id = '$from_id' LIMIT 1");
+SendMessage($from_id,"Ø¬ÙØª Ø¯Ø±Ø®ÙØ§Ø³Øª Ø¨Ø±Ø¯Ø§Ø´Øª Ø­Ø¯Ø§ÙÙ Ø¨Ø§ÛØ¯ 5000 Ø³Ú©Ù ÙØ§Ø¨Ù Ø¨Ø±Ø¯Ø§Ø´Øª Ø¯Ø§Ø´ØªÙ Ø¨Ø§Ø´ÛØ¯ â¼ï¸",$button);exit();
+}}
+elseif($text =="ð¿Ø´Ø§Ø±Ú Ø³ÛÙ Ú©Ø§Ø±Øª" and $setting['step'] =="tasfe" and $type == "private"){
+if($setting['money'] >= 5000){
+$connect->query("UPDATE user SET step = 'toman' WHERE id = '$from_id' LIMIT 1");
+SendMessage($from_id,"ØªØ¹Ø¯Ø§Ø¯ Ø±Ø§ ÙØ§Ø±Ø¯ Ú©ÙÛØ¯ðµ
+Ø­Ø¯Ø§ÙÙ 5000 Ø³Ú©Ù Ù Ø­Ø¯Ø§Ú©Ø«Ø± 1000000 Ø³Ú©Ù",json_encode(['keyboard'=>[[['text'=>"ðØ¨Ø§Ø²Ú¯Ø´Øª"]],],'resize_keyboard'=>true]));
+}else{
+$connect->query("UPDATE user SET step = 'none' WHERE id = '$from_id' LIMIT 1");
+SendMessage($from_id,"Ø¬ÙØª Ø¯Ø±Ø®ÙØ§Ø³Øª Ø¨Ø±Ø¯Ø§Ø´Øª Ø­Ø¯Ø§ÙÙ Ø¨Ø§ÛØ¯ 5000 Ø³Ú©Ù ÙØ§Ø¨Ù Ø¨Ø±Ø¯Ø§Ø´Øª Ø¯Ø§Ø´ØªÙ Ø¨Ø§Ø´ÛØ¯ â¼ï¸",$button);exit();
+}}
+elseif($setting['step'] =="toman" and is_numeric($text) and $type == "private"){
+if($text >= 5000 and $text <= 100000 and $setting['money'] >= $text){
+$connect->query("UPDATE user SET step = 'to-$text' WHERE id = '$from_id' LIMIT 1");
+SendMessage($from_id,"Ø´ÙØ§Ø±Ù ÙÙØ±Ø¯ ÙØ¸Ø± Ø±Ø§ ÙØ§Ø±Ø¯ Ú©ÙÛØ¯- Ø¯Ø±ØµÙØ±Øª ÙÛØ§Ø² Ø¨Ù Ù¾Ø´ØªÛØ¨Ø§ÙÛ Ù¾ÛØ§Ù Ø¨Ø¯ÛÙ ØªØ§ Ø´Ø§Ø±Ú Ø±Ù Ø¨ØµÙØ±Øª Ú©Ø¯ Ø¯Ø±ÛØ§ÙØª Ú©ÙÛØ¯",json_encode(['keyboard'=>[[['text'=>"ðØ¨Ø§Ø²Ú¯Ø´Øª"]],],'resize_keyboard'=>true]));
+}else{
+$connect->query("UPDATE user SET step = 'none' WHERE id = '$from_id' LIMIT 1");
+SendMessage($from_id,"ÙØ·ÙØ§ ÙØ¨ÙØº Ø±Ø§ Ø¨ÛÙ 5000 ØªØ§ 100000 Ø¨Ø§ ØªÙØ¬Ù Ø¨Ù ÙÙØ¬ÙØ¯Û Ø®ÙØ¯ ÙØ§Ø±Ø¯ Ú©ÙÛØ¯.",$button);
+}}
+elseif(strpos($setting['step'], "to-") !== false and is_numeric($text) and $type == "private"){
+if(strlen($text) == 11){
+$b = explode("-",$setting['step']);
+SendMessage($from_id,"âØ¯Ø±Ø®ÙØ§Ø³Øª ØªØ³ÙÛÙ Ø­Ø³Ø§Ø¨ Ø¨Ø§ ÙÙÙÙÛØª Ø§Ø±Ø³Ø§Ù Ù Ù¾Ø³ Ø§Ø² Ø¨Ø±Ø±Ø³Û Ø§ÙØ¬Ø§Ù Ø®ÙØ§ÙØ¯ Ø´Ø¯.
+
+ðÙØ¨ÙØº: <code>$b[1]</code> Ø³Ú©Ù
+ð³Ø´ÙØ§Ø±Ù Ø¬ÙØª Ø§ÙØ²Ø§ÛØ´ Ø´Ø§Ø±Ú: <code>$text</code>",$button);
+$mo = $setting['money']-$b[1];
+SendMessage($SIZDAHORG,"ðØ¯Ø±Ø®ÙØ§Ø³Øª ØªØ³ÙÛÙ Ø­Ø³Ø§Ø¨
+âââââââ
+ÙÙØ¹ Ø¯Ø±Ø®ÙØ§Ø³Øª : Ø´Ø§Ø±Ú Ø§Ù¾Ø±Ø§ØªÙØ±
+ðÙØ¨ÙØº: <code>$b[1]</code> Ø³Ú©Ù
+âï¸Ø´ÙØ§Ø±Ù Ú©Ø§Ø±Ø¨Ø± Ø¯Ø±Ø®ÙØ§Ø³Øª Ø´Ø¯Ù: <code>$text</code>
+ð¡Ø¢ÛØ¯Û Ø¹Ø¯Ø¯Û: <code>$from_id</code>
+ðÛÙØ²Ø±ÙÛÙ: @$username2
+ðÙÙØ¬ÙØ¯Û Ø¬Ø¯ÛØ¯: $mo",json_encode(['inline_keyboard' => [[['text' => "âØ§ÙØ¬Ø§Ù Ø´Ø¯",'callback_data' => "$from_id^$b[1]"]],]]));
+$connect->query("UPDATE user SET money = '$mo', step = 'none' WHERE id = '$from_id' LIMIT 1");
+}else{
+$connect->query("UPDATE user SET step = 'none' WHERE id = '$from_id' LIMIT 1");
+SendMessage($from_id,"Ø´ÙØ§Ø±Ù 11 Ø±ÙÙÛ Ø®ÙØ¯ Ø±Ø§ Ø¯Ø±Ø³Øª Ø§Ø±Ø³Ø§Ù Ú©ÙÛØ¯.",$button);
+}}
+elseif($text =="ð³Ú©Ø§Ø±Øª Ø¨Ø§ÙÚ©Ûð³" and $setting['step'] =="tasfe" and $type == "private"){
+if($setting['money'] >= 5000){
+$connect->query("UPDATE user SET step = 'bitcoin' WHERE id = '$from_id' LIMIT 1");
+SendMessage($from_id,"ÙØ¨ÙØº Ø±Ø§ ÙØ§Ø±Ø¯ Ú©ÙÛØ¯ðµ
+Ø­Ø¯Ø§ÙÙ 5000 Ø³Ú©Ù Ù Ø­Ø¯Ø§Ú©Ø«Ø± 1000000 ØªÙÙØ§Ù",json_encode(['keyboard'=>[[['text'=>"ðØ¨Ø§Ø²Ú¯Ø´Øª"]],],'resize_keyboard'=>true]));
+}else{
+$connect->query("UPDATE user SET step = 'none' WHERE id = '$from_id' LIMIT 1");
+SendMessage($from_id,"Ø¬ÙØª Ø¯Ø±Ø®ÙØ§Ø³Øª Ø¨Ø±Ø¯Ø§Ø´Øª Ø­Ø¯Ø§ÙÙ Ø¨Ø§ÛØ¯ 5000 ØªÙÙØ§Ù ÙØ§Ø¨Ù Ø¨Ø±Ø¯Ø§Ø´Øª Ø¯Ø§Ø´ØªÙ Ø¨Ø§Ø´ÛØ¯ â¼ï¸",$button);exit();
+}}
+elseif($setting['step'] =="bitcoin" and is_numeric($text) and $type == "private"){
+if($text >= 5000 and $text <= 1000000 and $setting['money'] >= $text){
+$connect->query("UPDATE user SET step = 'bioin-$text' WHERE id = '$from_id' LIMIT 1");
+SendMessage($from_id,"Ø´ÙØ§Ø±Ù Ú©Ø§Ø±Øª Ø¬ÙØª Ø¨Ø±Ø¯Ø§Ø´Øª Ø¬Ø§ÛØ²Ù Ø±Ø§ ÙØ§Ø±Ø¯ Ú©ÙÛØ¯:",json_encode(['keyboard'=>[[['text'=>"ðØ¨Ø§Ø²Ú¯Ø´Øª"]],],'resize_keyboard'=>true]));
+}else{
+$connect->query("UPDATE user SET step = 'none' WHERE id = '$from_id' LIMIT 1");
+SendMessage($from_id,"ÙØ·ÙØ§ ÙØ¨ÙØº Ø±Ø§ Ø¨ÛÙ 5000 ØªØ§ 1000000 Ø¨Ø§ ØªÙØ¬Ù Ø¨Ù ÙÙØ¬ÙØ¯Û Ø®ÙØ¯ ÙØ§Ø±Ø¯ Ú©ÙÛØ¯.",$button);
+}}
+elseif(strpos($setting['step'], "bioin-") !== false and $text != "ðØ¨Ø§Ø²Ú¯Ø´Øª" and $type == "private"){
+if(strlen($text) <= 17){
+$b = explode("-",$setting['step']);
+SendMessage($from_id,"âØ¯Ø±Ø®ÙØ§Ø³Øª ØªØ³ÙÛÙ Ø­Ø³Ø§Ø¨ Ø¨Ø§ ÙÙÙÙÛØª Ø§Ø±Ø³Ø§Ù Ù Ù¾Ø³ Ø§Ø² Ø¨Ø±Ø±Ø³Û Ø§ÙØ¬Ø§Ù Ø®ÙØ§ÙØ¯ Ø´Ø¯.
+
+ð¶ÙØ¨ÙØº: <code>$b[1]</code> ØªÙÙØ§Ù
+ð³Ø¢Ø¯Ø±Ø³ Ø§ÛØ¯Û Ø¹Ø¯Ø¯Û: <code>$text</code>",$button);
+$mo = $setting['money']-$b[1];
+SendMessage($SIZDAHORG,"ðØ¯Ø±Ø®ÙØ§Ø³Øª ØªØ³ÙÛÙ Ø­Ø³Ø§Ø¨
+âââââââ
+âÙÙØ¹ Ø¯Ø±Ø®ÙØ§Ø³Øª: Ú©Ø§Ø±Øª Ø¨Ù Ú©Ø§Ø±Øª
+ðµÙØ¨ÙØº: <code>$b[1]</code> ØªÙÙØ§Ù
+ð³Ø´ÙØ§Ø±Ù Ú©Ø§Ø±Øª: <code>$text</code>
+ð¡Ø¢ÛØ¯Û Ø¹Ø¯Ø¯Û: <code>$from_id</code>
+ðÛÙØ²Ø±ÙÛÙ: @$username2
+ðÙÙØ¬ÙØ¯Û Ø¬Ø¯ÛØ¯: $mo",json_encode(['inline_keyboard' => [[['text' => "âØ§ÙØ¬Ø§Ù Ø´Ø¯",'callback_data' => "$from_id^$b[1]"]],]]));
+$connect->query("UPDATE user SET money = '$mo', step = 'none' WHERE id = '$from_id' LIMIT 1");
+}else{
+$connect->query("UPDATE user SET step = 'none' WHERE id = '$from_id' LIMIT 1");
+SendMessage($from_id,"ÙØ·ÙØ§ Ø´ÙØ§Ø±Ù Ú©Ø§Ø±Øª Ø±Ø§ ØµØ­ÛØ­ Ø¨ÙØ±Ø³ØªÛØ¯.Ø¯Ø±ØµÙØ±Øª ÙÛØ§Ø² Ø¨Ø§ Ù¾Ø´ØªÛØ¨ÙÛ ØªÙØ§Ø³ Ø¨Ú¯ÛØ±ÛØ¯",$button);
+}}
+elseif($text =="ðªªØ§Ø±Ø²Ø¯ÛØ¬ÛØªØ§Ù-ØªØªØ±" and $setting['step'] =="tasfe" and $type == "private"){
+if($setting['money'] >= 50000){
+$connect->query("UPDATE user SET step = 'usdt' WHERE id = '$from_id' LIMIT 1");
+SendMessage($from_id,"ÙØ¨ÙØº Ø±Ø§Ø¨Ù ØªÙÙØ§Ù ÙØ§Ø±Ø¯ Ú©ÙÛØ¯ðµ
+Ø­Ø¯Ø§ÙÙ 50000 ØªÙÙØ§Ù Ù Ø­Ø¯Ø§Ú©Ø«Ø± 1000000 ØªÙÙØ§Ù",json_encode(['keyboard'=>[[['text'=>"ðØ¨Ø§Ø²Ú¯Ø´Øª"]],],'resize_keyboard'=>true]));
+}else{
+$connect->query("UPDATE user SET step = 'none' WHERE id = '$from_id' LIMIT 1");
+SendMessage($from_id,"Ø¬ÙØª Ø¯Ø±Ø®ÙØ§Ø³Øª Ø¨Ø±Ø¯Ø§Ø´Øª Ø­Ø¯Ø§ÙÙ Ø¨Ø§ÛØ¯ 50000 ØªÙÙØ§Ù ÙØ§Ø¨Ù Ø¨Ø±Ø¯Ø§Ø´Øª Ø¯Ø§Ø´ØªÙ Ø¨Ø§Ø´ÛØ¯ â¼ï¸",$button);exit();
+}}
+elseif($setting['step'] =="usdt" and is_numeric($text) and $type == "private"){
+if($text >= 50000 and $text <= 1000000 and $setting['money'] >= $text){
+$connect->query("UPDATE user SET step = 'bioiin-$text' WHERE id = '$from_id' LIMIT 1");
+SendMessage($from_id,"ÙØ·ÙØ§ Ø¢Ø¯Ø±Ø³ Ú©ÛÙ Ù¾ÙÙ Ø®ÙØ¯ Ø±Ø§ Ø§Ø±Ø³Ø§Ù Ú©ÙÛØ¯",json_encode(['keyboard'=>[[['text'=>"ðØ¨Ø§Ø²Ú¯Ø´Øª"]],],'resize_keyboard'=>true]));
+}else{
+$connect->query("UPDATE user SET step = 'none' WHERE id = '$from_id' LIMIT 1");
+SendMessage($from_id,"ÙØ·ÙØ§ ÙØ¨ÙØº Ø±Ø§ Ø¨ÛÙ 50000 ØªØ§ 1000000 Ø¨Ø§ ØªÙØ¬Ù Ø¨Ù ÙÙØ¬ÙØ¯Û Ø®ÙØ¯ ÙØ§Ø±Ø¯ Ú©ÙÛØ¯.",$button);
+}}
+elseif(strpos($setting['step'], "bioiin-") !== false and $text != "ðØ¨Ø§Ø²Ú¯Ø´Øª" and $type == "private"){
+if(strlen($text) <= 34){
+$b = explode("-",$setting['step']);
+SendMessage($from_id,"âØ¯Ø±Ø®ÙØ§Ø³Øª ØªØ³ÙÛÙ Ø­Ø³Ø§Ø¨ Ø¨Ø§ ÙÙÙÙÛØª Ø§Ø±Ø³Ø§Ù Ù Ù¾Ø³ Ø§Ø² Ø¨Ø±Ø±Ø³Û Ø§ÙØ¬Ø§Ù Ø®ÙØ§ÙØ¯ Ø´Ø¯.
+
+ð¶ÙØ¨ÙØº: <code>$b[1]</code> ØªÙÙØ§Ù
+ð³Ø¢Ø¯Ø±Ø³ Ú©ÛÙ Ù¾ÙÙ: <code>$text</code>",$button);
+$mo = $setting['money']-$b[1];
+SendMessage($SIZDAHORG,"ðØ¯Ø±Ø®ÙØ§Ø³Øª ØªØ³ÙÛÙ Ø­Ø³Ø§Ø¨
+âââââââ
+âÙÙØ¹ Ø¯Ø±Ø®ÙØ§Ø³Øª:  Ø§Ø±Ø²Ø¯ÛØ¬ÛØªØ§Ù ØªØªØ±
+ðµÙØ¨ÙØº: <code>$b[1]</code> ØªÙÙØ§Ù
+ð³Ø´ÙØ§Ø±Ù Ú©Ø§Ø±Øª: <code>$text</code>
+ð¡Ø¢ÛØ¯Û Ø¹Ø¯Ø¯Û: <code>$from_id</code>
+ðÛÙØ²Ø±ÙÛÙ: @$username2
+ðÙÙØ¬ÙØ¯Û Ø¬Ø¯ÛØ¯: $mo",json_encode(['inline_keyboard' => [[['text' => "âØ§ÙØ¬Ø§Ù Ø´Ø¯",'callback_data' => "$from_id^$b[1]"]],]]));
+$connect->query("UPDATE user SET money = '$mo', step = 'none' WHERE id = '$from_id' LIMIT 1");
+}else{
+$connect->query("UPDATE user SET step = 'none' WHERE id = '$from_id' LIMIT 1");
+SendMessage($from_id,"ÙØ·ÙØ§ Ø¢Ø¯Ø±Ø³ Ú©ÛÙ Ù¾ÙÙ Ø±Ø§ ØµØ­ÛØ­ Ø¨ÙØ±Ø³ØªÛØ¯.Ø¯Ø±ØµÙØ±Øª ÙÛØ§Ø² Ø¨Ø§ Ù¾Ø´ØªÛØ¨ÙÛ ØªÙØ§Ø³ Ø¨Ú¯ÛØ±ÛØ¯",$button);
+}}
+//bet-bot-v2 |.| Developer: 13 |||| instagram-id:@sizdahorg |||||| telegram-channel: 13HACK - @tmsizdah 
+
+if(strpos($data, "^") !== false){
+$g = explode("^", $data);
+DeleteMessage($SIZDAHORG,$messageid);
+SendMessage($g[0],"âØ¯Ø±Ø®ÙØ§Ø³Øª ØªØ³ÙÛÙ Ø­Ø³Ø§Ø¨ Ø¨Ø§ ÙÙÙÙÛØª Ø§ÙØ¬Ø§Ù Ø´Ø¯.
+ð°ÙØ¨ÙØº: $g[1] ØªÙÙØ§Ù
+â¤ï¸ÙÙÙÙ Ø¨Ø§Ø´ÛØ¯...");exit();
+}
+if($text =="ð¦Ø§ÙØ²Ø§ÛØ´ ÙÙØ¬ÙØ¯Ûð¦" and $type == "private"){
+$connect->query("UPDATE user SET step = 'bk' WHERE id = '$from_id' LIMIT 1");
+SendMessage($from_id,"ðð» ÙØ·ÙØ§ ÛÚ©Û Ø§Ø² Ø±ÙØ´ ÙØ§ Ø±Ø§ Ø¨Ø±Ø§Û Ø§ÙØ²Ø§ÛØ´ ÙÙØ¬ÙØ¯Û Ø§ÙØªØ®Ø§Ø¨ Ú©ÙÛØ¯
+
+",$button_f);
+}
+if($text =="ð¶ ØªØªØ±" and $setting['step'] =="bk" and $type == "private"){
+$connect->query("UPDATE user SET step = 'naam' WHERE id = '$from_id' LIMIT 1");
+SendMessage($from_id,"ð° ÙÛØ²Ø§Ù Ø§Ø¹ØªØ¨Ø§Ø±Û Ú©Ù ÙÛØ®ÙØ§ÙÛØ¯ Ø­Ø³Ø§Ø¨ Ø®ÙØ¯ Ø±Ø§ Ø´Ø§Ø±Ú Ú©ÙÛØ¯ Ø§Ø±Ø³Ø§Ù Ú©ÙÛØ¯ :
+
+# Ø­Ø¯Ø§ÙÙ 1 ØªØªØ±",json_encode(['keyboard'=>[[['text'=>"ðØ¨Ø§Ø²Ú¯Ø´Øª"]],],'resize_keyboard'=>true]));
+}
+//13HACK
+elseif($setting['step'] =="naam" and is_numeric($text) and $type == "private"){
+if($text >= 1 and $text <= 3000000){
+$connect->query("UPDATE user SET step = 'none' WHERE id = '$from_id' LIMIT 1");
+SendMessage($from_id,"ð°Ø¯Ø±Ø®ÙØ§Ø³Øª Ø´Ø§Ø±Ú Ø­Ø³Ø§Ø¨ Ø´ÙØ§ Ø¨Ø§ ÙÙÙÙÛØª Ø³Ø§Ø®ØªÙ Ø´Ø¯!
+
+Ø´ÙØ§ Ø¨Ø§ÛØ¯ ÙÛØ²Ø§Ù <code>$text</code> ØªØªØ± Ø±Ø§ Ø¨Ù Ø­Ø³Ø§Ø¨ ************** ÙØ§Ø±ÛØ² Ú©ÙÛØ¯ â
+Ù¾Ø³ Ø§Ø² ÙØ§Ø±ÛØ² Ø­Ø³Ø§Ø¨ Ø´ÙØ§ Ø­Ø¯Ø§Ú©Ø«Ø± Ø·Û 10 Ø¯ÙÛÙÙ Ø´Ø§Ø±Ú ÙÛØ´ÙØ¯ âï¸
+
+ð",$button);
+}else{
+$connect->query("UPDATE user SET step = 'none' WHERE id = '$from_id' LIMIT 1");
+SendMessage($from_id,"âï¸Ø­Ø¯Ø§ÙÙ ÙÙØ¯Ø§Ø± Ø´Ø§Ø±Ú 1 ØªØªØ± ÙÛØ¨Ø§Ø´Ø¯ ÙØ·ÙØ§ ÙØ¬Ø¯Ø¯ ÙÙØ¯Ø§Ø± Ø±Ø§ ÙØ§Ø±Ø¯ Ú©ÙÛØ¯",$button);
+}}
+if($text =="ð³Ú©Ø§Ø±Øª Ø¨Ù Ú©Ø§Ø±Øªð³" and $setting['step'] =="bk" and $type == "private"){
+$connect->query("UPDATE user SET step = 'shab' WHERE id = '$from_id' LIMIT 1");
+SendMessage($from_id,"ð°ÙØ·ÙØ§ ÙØ¨ÙØº Ø±Ø§ ÙØ§Ø±Ø¯ Ú©ÙÛØ¯ :
+â ï¸Ø­Ø¯Ø§ÙÙ ÙØ¨ÙØº Ø¨Ø±Ø§Û Ø´Ø§Ø±Ú Ø­Ø³Ø§Ø¨ 10000ØªÙÙØ§Ù ÙÛØ¨Ø§Ø´Ø¯",json_encode(['keyboard'=>[[['text'=>"ðØ¨Ø§Ø²Ú¯Ø´Øª"]],],'resize_keyboard'=>true]));
+}
+//13HACK
+elseif($setting['step'] =="shab" and is_numeric($text) and $type == "private"){
+if($text >= 10000 and $text <= 3000000){
+$connect->query("UPDATE user SET step = 'none' WHERE id = '$from_id' LIMIT 1");
+SendMessage($from_id,"ð°Ø¯Ø±Ø®ÙØ§Ø³Øª Ø´Ø§Ø±Ú Ø­Ø³Ø§Ø¨ Ø´ÙØ§ Ø¨Ø§ ÙÙÙÙÛØª Ø³Ø§Ø®ØªÙ Ø´Ø¯!
+
+Ø´ÙØ§ Ø¨Ø§ÛØ¯ Ø¨Ù ÙØ¨ÙØº <code>$text</code>   Ø¨Ù Ø´ÙØ§Ø±Ù Ú©Ø§Ø±Øª +++++++++++++ Ø¨Ù ÙØ§Ù ********* ÙØ§Ø±ÛØ² Ú©ÙÛØ¯ â
+ðÙ¾Ø³ Ø§Ø² ÙØ§Ø±ÛØ² ÙØ¨ÙØº Ø¨Ù Ú©Ø§Ø±Øª Ø°Ú©Ø± Ø´Ø¯Ù Ø¹Ú©Ø³ Ø±Ø³ÛØ¯ Ø±Ø§ Ø¨Ù Ù¾Ø´ØªÛØ¨Ø§ÙÛ Ø§Ø±Ø³Ø§Ù Ú©ÙÛØ¯ ØªØ§ Ø­Ø³Ø§Ø¨ Ú©Ø§Ø±Ø¨Ø±ØªÛØ§Ù Ø´Ø§Ø±Ú Ø´ÙØ¯ 
+
+ð",$button);
+}else{
+$connect->query("UPDATE user SET step = 'none' WHERE id = '$from_id' LIMIT 1");
+SendMessage($from_id,"âÙØ¨ÙØº Ø¨Ø§ÛØ¯ Ø­Ø¯Ø§ÙÙ 10000 Ù Ø­Ø¯Ø§Ú©Ø«Ø± 3.000.000 ØªÙÙØ§Ù Ø¨Ø§Ø´Ø¯.",$button);
+}}
+if($text =="ðØ´Ø§Ø±Ú Ø³ÛÙÚ©Ø§Ø±Øª" and $type == "private"){
+SendMessage($from_id,"ÙØªÙ ØªÙØ¸ÛÙ ÙØ´Ø¯Ù Ø§Ø³Øª");
+}
+//13HACK
+if($text =="ð¥Ø²ÛØ± ÙØ¬ÙÙØ¹Ù Ú¯ÛØ±Ûð¥" and $type == "private"){
+bot('SendPhoto',['chat_id'=>$from_id,'photo'=>"your photo link",
+'caption'=>"ð¥ Ø¨Ø§ Ø±Ø¨Ø§Øª Ø´Ø±Ø·Ø¨ÙØ¯Û  Ø¨Ù Ø±Ø§Ø­ØªÛ Ù¾ÙÙ Ù¾Ø§Ø±Ù Ú©ÙÛØ¯ !
+
+ð¢ 24 Ø³Ø§Ø¹ØªÙ Ø¢ÙÙØ§ÛÙ 
+ð¢ 24 Ø³Ø§Ø¹ØªÙ Ø¨Ø§Ø²Û ÙØ¹Ø§Ù 
+ð¢ Ù¾Ø´ØªÛØ¨Ø§ÙÛ 24 Ø³Ø§Ø¹ØªÙ
+ð¢ Ø¨Ø±Ø¯Ø§Ø´Øª Ø³Ø±ÛØ¹ 
+Ø¨Ø§Ø²Û ÙØ§Û Ø¬Ø°Ø§Ø¨ Ù Ø¬Ø§ÙØ¨ Ù Ø§Ø³ØªÛÚ©Ø±Ø§Û ØªÙÚ¯Ø±Ø§ÙÛ
+
+ ÙÙÛÙ Ø­Ø§ÙØ§ Ø§ÙØªØ­Ø§Ù Ú©Ùððð
+https://t.me/$botid?start=$from_id",]);
+bot('sendMessage',['chat_id'=>$from_id,'text'=>"ð Ø¨Ø§ Ø§Ø±Ø³Ø§Ù Ø¨ÙØ± Ø¨Ø§ÙØ§ Ø¨Ù Ø¯ÙØ³ØªØ§Ù Ø®ÙØ¯ ÙÛØªÙØ§ÙÛØ¯ Ø¨Ù Ø§Ø²Ø§Û ÙØ± ÙÙØ± Ú©Ù Ø¨Ø§ ÙÛÙÚ© Ø´ÙØ§ ÙØ§Ø±Ø¯ Ø±Ø¨Ø§Øª ÙÛØ´ÙØ¯ 100ØªÙÙØ§Ù Ø¯Ø±ÛØ§ÙØª Ú©ÙÛØ¯.ð
+âï¸Ø¨Ø§Ø¨Øª Ø²ÛØ±ÙØ¬ÙÙØ¹Ù ÙÛÚ© ÙÛÚ ÙØ¨ÙØºÛ Ø¨Ù Ø­Ø³Ø§Ø¨ Ú©Ø§Ø±Ø¨Ø±ÛØªØ§Ù Ø§Ø¶Ø§ÙÙ ÙØ®ÙØ§ÙØ¯ Ø´Ø¯.",'parse_mode'=>'html','reply_to_message_id'=>$update->message->message_id + 1]);
+}
+if($text =="ðØ­Ø³Ø§Ø¨ Ú©Ø§Ø±Ø¨Ø±Ûð" and $type == "private"){
+SendMessage($from_id,"ðÙØ§Ù: ".$first_name."
+ð¢Ø¢ÛØ¯Û Ø¹Ø¯Ø¯Û: <code>$from_id</code>
+ðÛÙØ±Ø²ÙÛÙ: @".$username2."
+ðµÙÙØ¬ÙØ¯Û Ø´ÙØ§: {$setting['money']} 
+ð¥ØªØ¹Ø¯Ø§Ø¯ Ø²ÛØ±ÙØ¬ÙÙØ¹Ù ÙØ§: {$setting['subset']} ÙÙØ±
+âââââââ
+ð¢ @$channel
+ð¤ @$botid
+@tmsizdah");
+} 
+//13HACK
+if($text =="âï¸ÙÙØ§ÙÛÙ" and $type == "private"){
+SendMessage($from_id,"âï¸ÙØªÙ ÙÙØ§ÙÛÙ ØªÙØ¸ÛÙ ÙØ´Ø¯Ù 
+@tmsizdah");
+} 
+//13HACK
+if($text =="âï¸Ù¾Ø´ØªÛØ¨Ø§ÙÛ" and $type == "private"){
+SendMessage($from_id,"ÙØªÙ Ù¾Ø´ØªÛØ¨Ø§ÙÛ ØªÙØ¸ÛÙ ÙØ´Ø¯Ù Ø§Ø³Øª ");
+}
+if($text =="ð Ø±Ø§ÙÙÙØ§" and $type == "private"){
+SendMessage($from_id,"ÙØªÙ Ø±Ø§ÙÙÙØ§ ØªÙØ¸ÛÙ ÙØ´Ø¯Ù Ø§Ø³Øª");
+}
+elseif($text =="/panel" or $text == "Ø¨Ø§Ø²Ú¯Ø´Øª"){
+if(in_array($from_id,$admin) and $type == "private"){
+$connect->query("UPDATE user SET step = 'none' WHERE id = '$from_id' LIMIT 1");
+SendMessage($from_id,"â»ï¸Ø¨Ù Ù¾ÙÙ ÙØ¯ÛØ±ÛØªÛ Ø®ÙØ´ Ø¢ÙØ¯ÛØ¯",$button_admin);
+}}
+if($text =="ðØ¢ÙØ§Ø± Ø±Ø¨Ø§Øª ð" and in_array($from_id,$admin) and $type == "private"){
+$a = mysqli_num_rows(mysqli_query($connect,"SELECT id FROM user"));
+$a2 = mysqli_num_rows(mysqli_query($connect,"SELECT * FROM user WHERE step = 'bon'"));
+SendMessage($from_id,"ØªØ¹Ø¯Ø§Ø¯ Ú©Ø§Ø±Ø¨Ø±Ø§Ù: $a
+ØªØ¹Ø¯Ø§Ø¯ Ú©Ø§Ø±Ø¨Ø±Ø§Ù Ø¨Ù Ø´Ø¯Ù: $a2
+@tmsizdah");
+}
+if($text =="âï¸Ù¾ÛØ§Ù ÙÙÚ¯Ø§ÙÛâï¸" and in_array($from_id,$admin) and $type == "private"){
+$connect->query("UPDATE user SET step = 'rall' WHERE id = '$from_id' LIMIT 1");
+SendMessage($from_id,"â­ï¸ÙØ·ÙØ§ Ù¾ÛØ§Ù Ø®ÙØ¯ Ø±Ø§ Ø¬ÙØª Ø§Ø±Ø³Ø§Ù Ø¨Ù Ú©Ø§Ø±Ø¨Ø±Ø§Ù Ø¨ÙØ±Ø³ØªÛØ¯:",json_encode(['keyboard'=>[[['text'=>"Ø¨Ø§Ø²Ú¯Ø´Øª"]],],'resize_keyboard'=>true]));
+}
+if($setting['step'] =="rall" and $text !="Ø¨Ø§Ø²Ú¯Ø´Øª" and $type == "private"){
+$connect->query("UPDATE user SET step = 'none' WHERE id = '$from_id' LIMIT 1");
+SendMessage($from_id,"Ø§Ø±Ø³Ø§Ù Ø´Ø¯.");
+$a = mysqli_query($connect,"SELECT * FROM user");
+while($row = mysqli_fetch_array($a)){
+$users[] = $row['id'];
+}
+foreach($users as $usmember){
+SendMessage($usmember,$text);
+}}
+//bet-bot-v2 |.| Developer: 13 |||| instagram-id:@sizdahorg |||||| telegram-channel: 13HACK - @tmsizdah 
+
+if($text =="ð¯ÙØ±ÙØ§Ø±Ø¯ ÙÙÚ¯Ø§ÙÛð¯" and in_array($from_id,$admin) and $type == "private"){
+$connect->query("UPDATE user SET step = 'forall' WHERE id = '$from_id' LIMIT 1");
+SendMessage($from_id,"â­ï¸ÙØ·ÙØ§ Ù¾ÛØ§Ù Ø®ÙØ¯ Ø±Ø§ Ø¬ÙØª ÙØ±ÙØ§Ø±Ø¯ Ø¨Ù Ú©Ø§Ø±Ø¨Ø±Ø§Ù Ø§Ø±Ø³Ø§Ù Ú©ÙÛØ¯:",json_encode(['keyboard'=>[[['text'=>"Ø¨Ø§Ø²Ú¯Ø´Øª"]],],'resize_keyboard'=>true]));
+}
+if($setting['step'] =="forall" and $text !="Ø¨Ø§Ø²Ú¯Ø´Øª" and $type == "private"){
+$connect->query("UPDATE user SET step = 'none' WHERE id = '$from_id' LIMIT 1");
+SendMessage($from_id,"ÙÙØ±ÙØ§Ø±Ø¯ Ø´Ø¯.");
+$a = mysqli_query($connect,"SELECT * FROM user");
+while($row = mysqli_fetch_array($a)){
+$users[] = $row['id'];
+}
+foreach($users as $usmember){
+bot('forwardMessage',['chat_id'=>$usmember,'from_chat_id'=>$from_id,'message_id'=>$message_id]);
+}}
+if($text =="ðµØ§ÙØ²Ø§ÛØ´ ÙÙØ¬ÙØ¯Û" and in_array($from_id,$admin) and $type == "private"){
+$connect->query("UPDATE user SET step = 'coinn' WHERE id = '$from_id' LIMIT 1");
+SendMessage($from_id,"Ø¬ÙØª Ø§ÙØ²Ø§ÛØ´ ÙÙØ¬ÙØ¯Û ÙØ§ÙÙØ¯ Ø²ÛØ± Ø¹ÙÙ Ú©ÙÛØ¯:
+
+ÙÙØ¯Ø§Ø± ÙØ¨ÙØº Ø¨Ù ØªÙÙØ§Ù
+Ø¢ÛØ¯Û Ø¹Ø¯Ø¯Û Ú©Ø§Ø±Ø¨Ø± ÙÙØ±Ø¯ ÙØ¸Ø±",json_encode(['keyboard'=>[[['text'=>"Ø¨Ø§Ø²Ú¯Ø´Øª"]],],'resize_keyboard'=>true]));
+}
+if($setting['step'] =="coinn" and $text !="Ø¨Ø§Ø²Ú¯Ø´Øª" and $type == "private"){
+$text = explode("\n", $text);
+@$s = mysqli_fetch_assoc(mysqli_query($connect,"SELECT * FROM user WHERE id = '$text[1]' LIMIT 1"));
+$ez = $s['money']+$text[0];
+$connect->query("UPDATE user SET money = '$ez' WHERE id = '$text[1]' LIMIT 1");
+$connect->query("UPDATE user SET step = 'none' WHERE id = '$from_id' LIMIT 1");
+SendMessage($from_id,"Ø§ÙØ¬Ø§Ù Ø´Ø¯.",$button_admin);
+SendMessage($text[1],"âÚ©Ø§Ø±Ø¨Ø± Ú¯Ø±Ø§ÙÛ
+ð¨âð¬ÙÙØ¯Ø§Ø± ÙØ¨ÙØº $text[0] ØªÙÙØ§Ù Ø§Ø² Ø³ÙÛ ÙØ¯ÛØ±ÛØª Ø±Ø¨Ø§Øª Ø¨Ù Ø­Ø³Ø§Ø¨ Ú©Ø§Ø±Ø¨Ø±Û Ø´ÙØ§ Ø§ÙØ²ÙØ¯Ù Ø´Ø¯. ");
+}
+if($text =="âÚ©Ø§ÙØ´ ÙÙØ¬ÙØ¯Û" and in_array($from_id,$admin) and $type == "private"){
+$connect->query("UPDATE user SET step = 'coinnn' WHERE id = '$from_id' LIMIT 1");
+SendMessage($from_id,"Ø¬ÙØª Ú©Ø§ÙØ´ ÙÙØ¬ÙØ¯Û ÙØ§ÙÙØ¯ Ø²ÛØ± Ø¹ÙÙ Ú©ÙÛØ¯:
+
+ÙÙØ¯Ø§Ø± ÙØ¨ÙØº Ø¨Ù ØªÙÙØ§Ù
+Ø¢ÛØ¯Û Ø¹Ø¯Ø¯Û Ú©Ø§Ø±Ø¨Ø± ÙÙØ±Ø¯ ÙØ¸Ø±",json_encode(['keyboard'=>[[['text'=>"Ø¨Ø§Ø²Ú¯Ø´Øª"]],],'resize_keyboard'=>true]));
+}
+if($setting['step'] =="coinnn" and $text !="Ø¨Ø§Ø²Ú¯Ø´Øª" and $type == "private"){
+$text = explode("\n", $text);
+@$s = mysqli_fetch_assoc(mysqli_query($connect,"SELECT * FROM user WHERE id = '$text[1]' LIMIT 1"));
+$ez = $s['money']-$text[0];
+$connect->query("UPDATE user SET money = '$ez' WHERE id = '$text[1]' LIMIT 1");
+$connect->query("UPDATE user SET step = 'none' WHERE id = '$from_id' LIMIT 1");
+SendMessage($from_id,"Ø§ÙØ¬Ø§Ù Ø´Ø¯.",$button_admin);
+SendMessage($text[1],"âÚ©Ø§Ø±Ø¨Ø± Ú¯Ø±Ø§ÙÛ
+âÙÙØ¯Ø§Ø± ÙØ¨ÙØº $text[0] ØªÙÙØ§Ù ØªÙØ³Ø· ÙØ¯ÛØ±ÛØª Ø±Ø¨Ø§Øª Ø§Ø² Ø­Ø³Ø§Ø¨ Ú©Ø§Ø±Ø¨Ø±Û Ø´ÙØ§ Ú©Ø³Ø± Ø´Ø¯.");
+}
+if($text =="â ï¸ÙØ³Ø¯ÙØ¯ Ú©Ø±Ø¯Ù Ø­Ø³Ø§Ø¨â ï¸" and in_array($from_id,$admin) and $type == "private"){
+$connect->query("UPDATE user SET step = 'bl' WHERE id = '$from_id' LIMIT 1");
+SendMessage($from_id,"Ø¢ÛØ¯Û Ø¹Ø¯Ø¯Û ÙØ±Ø¯ ÙÙØ±Ø¯ ÙØ¸Ø± Ø±Ø§ Ø§Ø±Ø³Ø§Ù ÙÙØ§ÛÛØ¯:",json_encode(['keyboard'=>[[['text'=>"Ø¨Ø§Ø²Ú¯Ø´Øª"]],],'resize_keyboard'=>true]));
+}
+if($setting['step'] =="bl" and $text !="Ø¨Ø§Ø²Ú¯Ø´Øª" and $type == "private"){
+$connect->query("UPDATE user SET step = 'bon' WHERE id = '$text' LIMIT 1");
+$connect->query("UPDATE user SET step = 'none' WHERE id = '$from_id' LIMIT 1");
+SendMessage($from_id,"Ø¨ÙØ§Ú© Ø´Ø¯",$button_admin);
+}
+if($text =="âØ¢Ø²Ø§Ø¯ Ø³Ø§Ø²Û Ø­Ø³Ø§Ø¨â" and in_array($from_id,$admin) and $type == "private"){
+$connect->query("UPDATE user SET step = 'obl' WHERE id = '$from_id' LIMIT 1");
+SendMessage($from_id,"Ø¢ÛØ¯Û Ø¹Ø¯Ø¯Û ÙØ±Ø¯ ÙÙØ±Ø¯ ÙØ¸Ø± Ø±Ø§ Ø§Ø±Ø³Ø§Ù ÙÙØ§ÛÛØ¯:",json_encode(['keyboard'=>[[['text'=>"Ø¨Ø§Ø²Ú¯Ø´Øª"]],],'resize_keyboard'=>true]));
+}
+if($setting['step'] =="obl" and $text !="Ø¨Ø§Ø²Ú¯Ø´Øª" and $type == "private"){
+$connect->query("UPDATE user SET step = 'none' WHERE id = '$text' LIMIT 1");
+$connect->query("UPDATE user SET step = 'none' WHERE id = '$from_id' LIMIT 1");
+SendMessage($from_id,"Ø¢ÙØ¨ÙØ§Ú© Ø´Ø¯",$button_admin);
+}
+//bet-bot-v2 |.| Developer: 13 |||| instagram-id:@sizdahorg |||||| telegram-channel: 13HACK - @tmsizdah 
+// Ø¨Ø±Ø§Û Ø³ÙØ§Ø±Ø´ Ø³Ø§Ø®Øª Ø±Ø¨Ø§Øª ÛØ§ Ø±Ø§ÙÙÙØ§ÛÛ Ø¯Ø± Ø§ÛÙØ³ØªØ§Ú¯Ø±Ø§Ù Ø¨Ù Ø§ÛÙ Ø§ÛØ¯Û Ù¾ÛØ§Ù Ø¨Ø¯ÛÙ: @sizdahorg
+?>
